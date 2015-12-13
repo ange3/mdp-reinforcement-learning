@@ -18,10 +18,12 @@ For the first two data sets, I used Maximum Likelihood Estimation to learn the T
 | Small| 100 | 5 | 52971.6335| 6.389| 100|
 | Medium|251,001|2|6339.6766|59.069|50.16|
 
-1. Small Dataset – Grid World
+**Small Dataset – Grid World**
+
 Value Iteration worked well for the small data set as we had a comprehensive data set where all states had been visited in the sample data. Hence, the Transition and Reward functions were quite accurate and allowed us to come up with relatively accurate values for the different states. 
 
-2. Medium Dataset – Inverted Cart Pendulum
+**Medium Dataset – Inverted Cart Pendulum**
+
 The second data set had many more states than the first. As can be seen in Table 1, only about half of all the data sets were present in the sample. Hence, our Transition and Reward functions were less accurate and could not predict the exact utility of each state. States where no best action was found based on the calculated utilities were given a random action. 
 Overall, this method was effective for finding the policy for states where we had almost complete information about the rewards in each state, but lacking when we had sparse data and no known model of the world.
 
@@ -34,8 +36,10 @@ Data Set | # States | Actions | Score | Time (in seconds) | % of states with opt
 |:---------------:|:---------------:|:---------------:|:---------------:|:---------------:|:---------------:|
 Large |	531,441	| 157| -366.0502 | 122.089 | 0.0129
 
-Large Dataset – Unknown Model
+**Large Dataset – Unknown Model**
+
 As can be seen in the table, the majority of states were not given an optimal action policy. This can partially be attributed to constraints in the amount of data provided. The exploration that was implemented in the algorithm was limited to the (state, action, successor state) groups that had already been observed in the sample data and so did not represent true exploration of the state space. 
+
 To improve this algorithm further, I would allow exploration of the states by choosing a random start state and then proceeding through successor states, instead of following the data points given in the sample data. Another option is to use eligibility traces to allow states with an observed reward to propagate these utilities back to neighbor states, so that rewards of states observed later will be reflected in states already visited.
 
 
